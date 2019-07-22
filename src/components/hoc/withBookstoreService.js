@@ -5,7 +5,11 @@ function withBookstoreService(Component) {
 	return (props) => {
 		return (
 			<BookstoreServiceConsumer>
-				(bookstoreService) => <Component {...props} bookstoreService />
+				{
+					(bookstoreService) => {
+						return <Component {...props} bookstoreService={bookstoreService} />
+					}
+				}				
 			</BookstoreServiceConsumer>
 		)
 	}
