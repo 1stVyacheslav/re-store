@@ -19,9 +19,8 @@
   }
 }
 .lds-wedges {
-	width:100%;
-	height:100%;
-  position: relative;
+	position: relative;
+	margin: 0px auto;
 }
 .lds-wedges > div > div {
   -webkit-transform-origin: 100px 100px;
