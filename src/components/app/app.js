@@ -9,7 +9,7 @@ import { BookstoreServiceProvider } from '../bookstore-service-context/bookstore
 const App = () => {
 	return (
 			<div className='jumbotron text-cemter'>
-				<BookstoreServiceProvider service={new BooktoreService()}>
+				<BookstoreServiceProvider value={new BooktoreService()}>
 					<Spinner />
 					<ErrorIndicator />
 				</BookstoreServiceProvider>
