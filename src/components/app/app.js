@@ -1,21 +1,21 @@
 import React from 'react';
 
 import './app.css';
-import BooktoreService from '../../services/bookstore-service';
-import Spinner from '../spinner';
-import ErrorIndicator from '../error-indicator/error-indicator';
-import { BookstoreServiceProvider } from '../bookstore-service-context/bookstore-service-context';
 
-const App = () => {
+import { withBookstoreService } from '../hoc';
+import Spinner from '../spinner';
+// import ErrorIndicator from '../error-indicator/error-indicator';
+
+
+const App = ( { bookstoreService } ) => {
+
+	console.log(bookstoreService.getBooks())
+
 	return (
 			<div className='jumbotron text-cemter'>
-				<BookstoreServiceProvider value={new BooktoreService()}>
-					<Spinner />
-					<ErrorIndicator />
-				</BookstoreServiceProvider>
-
+				<Spinner />
 			</div>
 		)
 }
 
-export default App;
+export default withBookstoreService(App);
