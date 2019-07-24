@@ -15,7 +15,7 @@ export default class BooktoreService {
 			},
 			{
 				id: 3,
-				title: 'Roadsid Picnic',
+				title: 'Roadside Picnic',
 				author: 'Arkady and Boris Strugatsky'
 			}
 		]
