@@ -13,7 +13,7 @@ const App = () => {
 	
 
 	return (
-			<div className='jumbotron text-cemter'>
+			<main role='main' className='container'>
 
 				<Link to='/' className='btn btn-primary mr-3'>Home Page</Link>
 				<Link to='/cart' className='btn btn-primary mr-3'>Cart Page</Link>
@@ -29,7 +29,7 @@ const App = () => {
 
 				</Switch>		
 				
-			</div>
+			</main>
 		)
 }
 

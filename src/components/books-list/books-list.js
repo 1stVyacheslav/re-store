@@ -29,11 +29,11 @@ class BooksList extends Component {
 		})
 
 		return (
-			<div>Books List:
-				<ul>					
+			
+				<ul className='book-list'>					
 					{booksList}
 				</ul>
-			</div>
+			
 		)
 	}
 }
@@ -48,7 +48,3 @@ export default compose(
 		withBookstoreService(),
 		connect(mapStateToProps, mapDispathToProps)
 	)(BooksList)
-
-// withBookstoreService()(
-// 	connect(mapStateToProps, mapDispathToProps)(BooksList)
-// ) ;
