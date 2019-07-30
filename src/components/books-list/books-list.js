@@ -14,13 +14,6 @@ class BooksList extends Component {
 	componentDidMount() {
 
 		this.props.fetchBooks()
-		
-		// const { bookstoreService, booksLoaded, booksRequested, booksError } = this.props;
-
-		// booksRequested()
-		// bookstoreService.getBooks()
-		// 	.then( (data) => booksLoaded(data) )
-		// 	.catch( (error) => booksError(error) )			
 
 	}
 
@@ -59,11 +52,11 @@ const mapStateToProps = ( { books, loading, error } ) => {
 const mapDispathToProps = (dispatch, ownProps) => {
 	return {
 		fetchBooks: () => {
-			// const { bookstoreService, booksLoaded, booksRequested, booksError } = this.props;
-
-			dispatch(booksRequested())
+			dispatch(booksRequested()) // state.dispatch({type:'BOOKS_REQUESTED'})
 			ownProps.bookstoreService.getBooks()
+				//state.dispatch({type:'BOOKS_LOADED', payload: data})
 				.then( (data) => dispatch(booksLoaded(data)) )
+				//state.dispatch({type:'BOOKS_ERROR', payload: error})
 				.catch( (error) => dispatch(booksError(error)) )	
 		}
 	}
