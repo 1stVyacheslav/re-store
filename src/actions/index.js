@@ -12,7 +12,15 @@ function booksRequested() {
 	}
 }
 
+function booksError(error) {
+	return {
+		type: 'BOOK_ERROR',
+		payload: error
+	}
+}
+
 export {
 	booksLoaded,
-	booksRequested
+	booksRequested,
+	booksError
 }

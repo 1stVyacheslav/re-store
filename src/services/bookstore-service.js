@@ -26,9 +26,16 @@ export default class BooktoreService {
 	]
 
 	getBooks() {
-		return new Promise( (resolve) => {
-			setTimeout(() => resolve(this.data), 
-			1000)
+		return new Promise( (resolve, reject) => {
+			setTimeout(() => {
+				
+				if (Math.random() > 0.7) {
+					reject(new Error('Something bad happend!'))
+				} else {
+					resolve(this.data)
+				}
+				
+			}, 1000)
 		} )
 	}
 	
