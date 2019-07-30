@@ -9,17 +9,17 @@ export default function reducer(state = initialState, action) {
 
 	switch (action.type) {
 
-		case 'BOOKS_REQUESTED':
+		case 'FETCH_BOOKS_REQUEST':
 			return initialState;
 
-		case 'BOOKS_LOADED':
+		case 'FETCH_BOOKS_SUCCESS':
 			return {
 				books: action.payload,
 				loading: false,
 				error: null
 			}
 		
-		case 'BOOK_ERROR':
+		case 'FETCH_BOOKS_FAILURE':
 			return {
 				books: [],
 				loading: false,

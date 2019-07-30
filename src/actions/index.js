@@ -1,26 +1,32 @@
-
-function booksLoaded(newBooks) {
+function booksRequested() {
 	return {
-		type: 		'BOOKS_LOADED',
-		payload:	newBooks
+		type: 'FETCH_BOOKS_REQUEST'
 	}
 }
 
-function booksRequested() {
+function booksLoaded(newBooks) {
 	return {
-		type: 'BOOKS_REQUESTED'
+		type: 		'FETCH_BOOKS_SUCCESS',
+		payload:	newBooks
 	}
 }
 
 function booksError(error) {
 	return {
-		type: 'BOOK_ERROR',
+		type: 	'FETCH_BOOKS_FAILURE',
 		payload: error
 	}
 }
 
-export {
-	booksLoaded,
-	booksRequested,
-	booksError
+function fetchBooks( dispatch ,bookstoreService ) {
+	return function() {
+		dispatch(booksRequested()) // state.dispatch({type:'BOOKS_REQUESTED'})
+			bookstoreService.getBooks()
+				//state.dispatch({type:'BOOKS_LOADED', payload: data})
+				.then( (data) => dispatch(booksLoaded(data)) )
+				//state.dispatch({type:'BOOKS_ERROR', payload: error})
+				.catch( (error) => dispatch(booksError(error)) )	
+	}
 }
+
+export { fetchBooks }
