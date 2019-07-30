@@ -1,6 +1,7 @@
 
 const initialState = {
-	books: []
+	books: [],
+	loading: true
 }
 
 export default function reducer(state = initialState, action) {
@@ -8,7 +9,8 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case 'BOOKS_LOADED':
 			return {
-				books: action.payload
+				books: action.payload,
+				loading: false
 			}
 		default:
 			return state
