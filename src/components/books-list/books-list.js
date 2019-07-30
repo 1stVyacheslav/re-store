@@ -49,11 +49,11 @@ const mapStateToProps = ( { books, loading, error } ) => {
 	return {books, loading, error}
 }
 
-const mapDispathToProps = (dispatch, ownProps) => {
+const mapDispathToProps = (dispatch, { bookstoreService }) => {
 	return {
 		fetchBooks: () => {
 			dispatch(booksRequested()) // state.dispatch({type:'BOOKS_REQUESTED'})
-			ownProps.bookstoreService.getBooks()
+			bookstoreService.getBooks()
 				//state.dispatch({type:'BOOKS_LOADED', payload: data})
 				.then( (data) => dispatch(booksLoaded(data)) )
 				//state.dispatch({type:'BOOKS_ERROR', payload: error})
