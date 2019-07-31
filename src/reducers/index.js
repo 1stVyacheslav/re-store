@@ -43,38 +43,46 @@ export default function reducer(state = initialState, action) {
 						selectedBook = 	books.find( book => bookId === book.id ),				
 						item = 					cartItems.find(book => bookId === book.id),
 						idx =						cartItems.indexOf(item);
-			let	newCartItems = cartItems.slice()
-									
-			if (idx >= 0) {
-
-				const newItem = {
-					...item,
-					count: item.count + 1,
-					cost: item.cost + selectedBook.price
-				}
-				newCartItems = [
-					...newCartItems.slice(0, idx),
-					newItem,
-					...newCartItems.slice(idx + 1)
-				];
-
-			} else {
-				
-				const	newItem = {
-					id: selectedBook.id,
-					title: selectedBook.title,
-					count: 1,
-					cost: selectedBook.price				
-				}
-				newCartItems = [...newCartItems, newItem]
-
-			}
+			
+			let newItem = updateItem(selectedBook, item);
+					
 			return {
 				...state,
-				cartItems: newCartItems
+				cartItems: updateCartItems(cartItems, newItem, idx)
 			}
 
 		default:
 			return state
 	}
+}
+
+function updateCartItems(cartItems, item, index) {
+
+	let newCartItems;
+	
+	if (index < 0) {
+		newCartItems = [...cartItems, item]
+		return newCartItems
+	}
+
+	 newCartItems = [
+		...cartItems.slice(0, index),
+		item,
+		...cartItems.slice(index + 1)
+	]
+
+	return newCartItems
+}
+
+function updateItem(book, item = {}) {
+
+	const {id = book.id, title = book.title, cost = 0, count = 0} = item;
+	const newItem = {
+		id,
+		title,
+		count: count + 1,
+		cost: cost + book.price				
+	}
+
+	return newItem
 }
