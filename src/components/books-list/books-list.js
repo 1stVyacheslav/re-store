@@ -9,7 +9,22 @@ import { compose } from '../../utils';
 
 import './books-list.css';
 
-class BooksList extends Component {
+function BookList( {books} ) {
+
+	return (		
+			<ul className='book-list'>					
+				{books.map( (item) => {
+					return (
+					<li key={item.id}>
+						<BookItem book={item} />
+					</li>
+					)
+				})}
+			</ul>		
+	)
+}
+
+class BooksListContainer extends Component {
 
 	componentDidMount() {
 
@@ -29,19 +44,8 @@ class BooksList extends Component {
 			return <ErrorIndicator />
 		}
 
-		const booksList = books.map( (item) => {
-			return (
-				<li key={item.id}><BookItem book={item} /></li>
-			)
-		})
+		return <BookList books={books} />
 
-		return (
-			
-				<ul className='book-list'>					
-					{booksList}
-				</ul>
-			
-		)
 	}
 }
 
@@ -59,4 +63,4 @@ const mapDispathToProps =
 export default compose(
 		withBookstoreService(),
 		connect(mapStateToProps, mapDispathToProps)
-	)(BooksList)
+	)(BooksListContainer)
