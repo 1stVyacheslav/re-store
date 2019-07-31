@@ -6,21 +6,21 @@ export default class BooktoreService {
 			id: 1,
 			title: 'Flowers for Algernon',
 			author: 'Daniel Keyes',
-			price: 9.99,
+			price: 10,
 			coverImage: 'https://upload.wikimedia.org/wikipedia/en/e/ea/FlowersForAlgernon.jpg'
 		},
 		{
 			id: 2,
 			title: 'Altered Carbon',
 			author: 'Richard K. Morgan',
-			price: 19.99,
+			price: 20,
 			coverImage: 'https://upload.wikimedia.org/wikipedia/en/7/79/Altered_Carbon_cover_1_%28Amazon%29.jpg'
 		},
 		{
 			id: 3,
 			title: 'Roadside Picnic',
 			author: 'Arkady and Boris Strugatsky',
-			price: 199.99,
+			price: 200,
 			coverImage: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Roadside-picnic-macmillan-cover.jpg'
 		}
 	]
@@ -29,7 +29,7 @@ export default class BooktoreService {
 		return new Promise( (resolve, reject) => {
 			setTimeout(() => {
 				
-				if (Math.random() > 0.7) {
+				if (Math.random() > 1) {
 					reject(new Error('Something bad happend!'))
 				} else {
 					resolve(this.data)

@@ -18,15 +18,20 @@ function booksError(error) {
 	}
 }
 
+function bookAddedToCart(id) {
+	return {
+		type: 	'BOOK_ADDED_TO_CART',
+		payload: id
+	}
+}
+
 function fetchBooks( dispatch ,bookstoreService ) {
 	return function() {
-		dispatch(booksRequested()) // state.dispatch({type:'BOOKS_REQUESTED'})
-			bookstoreService.getBooks()
-				//state.dispatch({type:'BOOKS_LOADED', payload: data})
-				.then( (data) => dispatch(booksLoaded(data)) )
-				//state.dispatch({type:'BOOKS_ERROR', payload: error})
+		dispatch(booksRequested())
+			bookstoreService.getBooks()				
+				.then( (data) => dispatch(booksLoaded(data)) )				
 				.catch( (error) => dispatch(booksError(error)) )	
 	}
 }
 
-export { fetchBooks }
+export { fetchBooks, bookAddedToCart }
