@@ -34,4 +34,18 @@ function fetchBooks( dispatch ,bookstoreService ) {
 	}
 }
 
-export { fetchBooks, bookAddedToCart }
+function bookRemovedFromCart(id) {
+	return {
+		type: 	'BOOK_REMOVED_FROM_CART',
+		payload: id
+	}
+}
+
+function AllBooksRemovedFromCart(id) {
+	return {
+		type: 	'ALL_BOOKS_DEMOVED_FROM_CART',
+		payload: id
+	}
+}
+
+export { fetchBooks, bookAddedToCart, bookRemovedFromCart, AllBooksRemovedFromCart }
