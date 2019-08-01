@@ -63,7 +63,7 @@ function ShoppingCartTable( {items, total, onIncrease, onDecrease, onDelete} ) {
 	)
 }
 
-function mapStateToProps( { cartItems, orderTotal } ) {
+function mapStateToProps( { shoppingCart: { cartItems, orderTotal } } ) {
 	return {
 		items: cartItems,
 		total: orderTotal

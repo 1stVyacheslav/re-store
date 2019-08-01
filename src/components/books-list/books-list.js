@@ -49,7 +49,7 @@ class BooksListContainer extends Component {
 	}
 }
 
-const mapStateToProps = ( { books, loading, error } ) => {
+const mapStateToProps = ( { bookList: { books, loading, error } } ) => {
 	return {books, loading, error}
 }
 
@@ -59,10 +59,6 @@ const mapDispathToProps = (dispatch, { bookstoreService }) => {
 			onAddedToCart: (id) => dispatch(bookAddedToCart(id))
 		}	
 	}
-
-
-
-
 
 export default compose(
 		withBookstoreService(),
