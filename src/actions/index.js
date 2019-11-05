@@ -43,7 +43,7 @@ function bookRemovedFromCart(id) {
 
 function AllBooksRemovedFromCart(id) {
 	return {
-		type: 	'ALL_BOOKS_DEMOVED_FROM_CART',
+		type: 	'ALL_BOOKS_REMOVED_FROM_CART',
 		payload: id
 	}
 }

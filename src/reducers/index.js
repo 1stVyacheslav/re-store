@@ -9,7 +9,7 @@ const initialState = {
 	},
 	shoppingCart: {
 		cartItems: [],
-		orderTotal: 200
+		orderTotal: 0
 	}
 
 }

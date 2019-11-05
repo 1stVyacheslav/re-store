@@ -16,12 +16,7 @@ const App = () => {
 	return (
 			<main role='main' className='container'>
 
-				<ShopHeader numItems={2} total={200}/>
-
-				{/* <Link to='/' className='btn btn-primary mr-3'>Home Page</Link>
-				<Link to='/cart' className='btn btn-primary mr-3'>Cart Page</Link>
-				<Link to='/spinner' className='btn btn-primary mr-3'>spinner</Link>
-				<Link to='/error' className='btn btn-primary mr-3'>error</Link>				 */}
+				<ShopHeader />
 
 				<Switch>
 

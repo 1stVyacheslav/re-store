@@ -19,7 +19,7 @@ export default function shoppingCartReducer(state, action) {
 		case 'BOOK_REMOVED_FROM_CART':
 			return updateOrder(state, -1, action.payload)
 		
-		case 'ALL_BOOKS_DEMOVED_FROM_CART':
+		case 'ALL_BOOKS_REMOVED_FROM_CART':
 			const item = state.shoppingCart.cartItems.find(book => action.payload === book.id)
 			return updateOrder(state, -item.count, action.payload)
 
@@ -30,16 +30,17 @@ export default function shoppingCartReducer(state, action) {
 
 function updateOrder(state, quantity, id) {
 
-	const {bookList: {books}, shoppingCart: {cartItems}} = state;
+	const {bookList: {books}, shoppingCart: {cartItems, orderTotal}} = state;
 	
 	const selectedBook = 	books.find( book => id === book.id ),				
 				item = 					cartItems.find(book => id === book.id),
 				idx =	cartItems.indexOf(item),
-				newItem = updateItem(selectedBook, item, quantity);
+				newItem = updateItem(selectedBook, item, quantity),
+				newOrderTotal = orderTotal + quantity * selectedBook.price;
 	
 	return {
 			cartItems: updateCartItems(cartItems, newItem, idx),
-			orderTotal: 0
+			orderTotal: newOrderTotal
 	}
 }
 
